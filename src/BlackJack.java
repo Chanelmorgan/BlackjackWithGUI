@@ -33,6 +33,9 @@ public class BlackJack {
         dealerSum = 0;
         dealerAceCount= 0;
 
+        hiddenCard = deck.remove(deck.size() -1); // remove card at last index
+        dealerSum += hiddenCard.getValue();
+
 
     }
 

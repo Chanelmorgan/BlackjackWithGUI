@@ -15,4 +15,18 @@ public class Card {
     public String toString(){
         return value + "-" + type;
     }
+
+    // Getters
+    public int getValue() {
+        if ("AJQK".contains(value)) {
+            if (value == "A") {
+                return 11;
+            }
+            return 10;
+        }
+
+        return Integer.parseInt(value); // 2-10
+
+    }
+
 }
