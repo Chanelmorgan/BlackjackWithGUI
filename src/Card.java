@@ -29,4 +29,10 @@ public class Card {
 
     }
 
+    // Checks if the card is an Ace or not
+    public boolean isAce(){
+        return value == "A";
+
+    }
+
 }
