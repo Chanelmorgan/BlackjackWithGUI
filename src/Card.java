@@ -12,5 +12,7 @@ public class Card {
     }
 
     // toString method
-    public String to
+    public String toString(){
+        return value + "-" + type;
+    }
 }
