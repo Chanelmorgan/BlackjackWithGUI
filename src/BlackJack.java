@@ -8,6 +8,7 @@ import javax.swing.*;
 /* Potential improvements
 *
 *  - MAKE A PLAYER AND DEALER CLASS
+*  - Make the Gui a separate class ?
 *
 *
 *
@@ -34,9 +35,39 @@ public class BlackJack {
     int playerSum;
     int playerAceCount;
 
+    // GUI Variables
+    int boardWidth = 600;
+    int boardHeight = boardWidth;
+
+    JFrame jFrame = new JFrame("Black Jack");
+    JPanel gamePanel = new JPanel();
+    JPanel buttonPanel = new JPanel();
+    JButton hitButton = new JButton("Hit");
+    JButton stayButton = new JButton("Stay");
+
     // Constructor
     public BlackJack(){
         startGame();
+
+        // Generating the window
+        jFrame.setVisible(true);
+        jFrame.setSize(boardWidth, boardHeight);
+        jFrame.setLocationRelativeTo(null); // opens the gui in the center of screen
+        jFrame.setResizable(false);
+        jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Generating the main game panel
+        gamePanel.setLayout(new BorderLayout());
+        gamePanel.setBackground(new Color(53, 101, 77));
+        jFrame.add(gamePanel);
+
+        // Generating the panel for the buttons
+        hitButton.setFocusable(false);
+        buttonPanel.add(hitButton);
+        stayButton.setFocusable(false);
+        buttonPanel.add(stayButton);
+
+        jFrame.add(buttonPanel);
     }
 
     // Method to start the game
