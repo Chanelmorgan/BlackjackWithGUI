@@ -72,6 +72,34 @@ public class BlackJack {
 
                 }
 
+                // Printing statements
+                if(!stayButton.isEnabled()){
+                    dealerSum = reduceDealerAce();
+                    playerSum = reducePlayerAce();
+                    System.out.println("STAY: ");
+                    System.out.println(dealerSum);
+                    System.out.println(playerSum);
+
+                    String message = "";
+                    if(playerSum > 21) {
+                        message = "You lose!";
+                    } else if(dealerSum > 21) {
+                        message = "You win!";
+                    }
+                    // Both player and dealer have <= 21
+                    else if(playerSum == dealerSum) {
+                        message = "Tie!";
+                    } else if(playerSum > dealerSum) {
+                        message = "You Win!";
+                    } else if(playerSum < dealerSum) {
+                        message = "You lose";
+                    }
+
+                    g.setFont(new Font("Arial", Font.PLAIN, 30));
+                    g.setColor(Color.WHITE);
+                    g.drawString(message, 220, 250);
+                }
+
             } catch(Exception e) {
                 e.printStackTrace();
             }
