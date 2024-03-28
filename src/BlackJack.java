@@ -117,6 +117,24 @@ public class BlackJack {
             }
         });
 
+        // Adding function to the stay button
+        stayButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                hitButton.setEnabled(false);
+                stayButton.setEnabled(false);
+
+                // Dealer must draw until they have a sum of 17 or greater
+                while(dealerSum < 17){
+                    Card card = deck.remove(deck.size()-1);
+                    dealerSum += card.getValue();
+                    dealerAceCount += card.isAce()? 1: 0;
+                    dealerHand.add(card);
+                    gamePanel.repaint();
+                }
+            }
+        });
+
         // Calls repaint within the constructor
         gamePanel.repaint();
     }
