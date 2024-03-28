@@ -60,6 +60,15 @@ public class BlackJack {
                     Image cardImg = new ImageIcon(getClass().getResource(card.getImagePath())).getImage();
                     g.drawImage(cardImg,cardWidth + 25 + (cardWidth + 5)*i, 20, cardWidth, cardHeight, null );
                 }
+
+                // Draw players hand
+                for(int i = 0; i<playerHand.size(); i++) {
+                    Card card = playerHand.get(i);
+                    Image cardImg = new ImageIcon(getClass().getResource(card.getImagePath())).getImage();
+                    g.drawImage(cardImg, 20 + (cardWidth + 5)*i, 320, cardWidth, cardHeight, null);
+
+                }
+
             } catch(Exception e) {
                 e.printStackTrace();
             }
