@@ -39,7 +39,7 @@ public class BlackJack {
     int boardWidth = 600;
     int boardHeight = boardWidth;
 
-    int cardWidth = 110;
+    int cardWidth = 110; // ratio 1:1.4
     int cardHeight = 154;
 
     JFrame jFrame = new JFrame("Black Jack");
@@ -49,10 +49,14 @@ public class BlackJack {
         public void paintComponent(Graphics g) {
             super.paintComponent(g);
 
-            // draw hidden card
-            Image hiddenCardImg = new ImageIcon(getClass().getResource("./cards/BACK.png")).getImage();
-            g.drawImage(hiddenCardImg, 20, 20, cardWidth, cardHeight, null);
-
+            try {
+                // Draw hidden card
+                Image hiddenCardImg = new ImageIcon(getClass().getResource("./cards/BACK.png")).getImage();
+                g.drawImage(hiddenCardImg, 20, 20, cardWidth, cardHeight, null);
+            } catch(Exception e) {
+                e.printStackTrace();
+                ;
+            }
         }
     };
     JPanel buttonPanel = new JPanel();
