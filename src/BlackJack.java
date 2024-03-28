@@ -39,8 +39,22 @@ public class BlackJack {
     int boardWidth = 600;
     int boardHeight = boardWidth;
 
+    int cardWidth = 110;
+    int cardHeight = 154;
+
     JFrame jFrame = new JFrame("Black Jack");
-    JPanel gamePanel = new JPanel();
+    JPanel gamePanel = new JPanel() {
+
+        @Override
+        public void paintComponent(Graphics g) {
+            super.paintComponent(g);
+
+            // draw hidden card
+            Image hiddenCardImg = new ImageIcon(getClass().getResource("./cards/BACK.png")).getImage();
+            g.drawImage(hiddenCardImg, 20, 20, cardWidth, cardHeight, null);
+
+        }
+    };
     JPanel buttonPanel = new JPanel();
     JButton hitButton = new JButton("Hit");
     JButton stayButton = new JButton("Stay");
@@ -67,7 +81,7 @@ public class BlackJack {
         stayButton.setFocusable(false);
         buttonPanel.add(stayButton);
 
-        jFrame.add(buttonPanel);
+        jFrame.add(buttonPanel, BorderLayout.SOUTH);
     }
 
     // Method to start the game
