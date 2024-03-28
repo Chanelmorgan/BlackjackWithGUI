@@ -101,6 +101,24 @@ public class BlackJack {
         buttonPanel.add(stayButton);
 
         jFrame.add(buttonPanel, BorderLayout.SOUTH);
+
+        // Adding function to the hit button
+        hitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Card card = deck.remove(deck.size() -1);
+                playerSum += card.getValue();
+                playerAceCount += card.isAce() ? 1 : 0;
+                playerHand.add(card);
+                if(reducePlayerAce() > 21){
+                    hitButton.setEnabled(false);
+                }
+                gamePanel.repaint();
+            }
+        });
+
+        // Calls repaint within the constructor
+        gamePanel.repaint();
     }
 
     // Method to start the game
@@ -170,6 +188,7 @@ public class BlackJack {
         System.out.println(deck);
     }
 
+    // Method to shuffle the deck of cards
     private void shuffleDeck() {
         for (int i = 0; i < deck.size(); i++) {
             int j = random.nextInt(deck.size());
@@ -180,6 +199,23 @@ public class BlackJack {
         }
         System.out.println("AFTER SHUFFLE: ");
         System.out.println(deck);
+    }
+
+    // Method to hnadle the change of ace from 11 to 1 if hand over 21
+    private int reducePlayerAce(){
+        while(playerSum > 21 && playerAceCount > 0) {
+            playerSum -= 10;
+            playerAceCount -= 1;
+        }
+        return playerSum;
+    }
+
+    private int reduceDealerAce(){
+        while(dealerSum > 21 && dealerAceCount > 0) {
+            dealerSum -= 10;
+            dealerAceCount -= 1;
+        }
+        return dealerSum;
     }
 
 
