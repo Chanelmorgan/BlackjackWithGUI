@@ -34,10 +34,10 @@ public class Card {
         return value == "A";
 
     }
-
     // method to get the image path
     public String getImagePath(){
-        return "./.cards/" + this + ".png";
+        return "./cards/" + this + ".png";
     }
+
 
 }

@@ -58,6 +58,7 @@ public class BlackJack {
                 for(int i =0; i<dealerHand.size(); i++) {
                     Card card = dealerHand.get(i);
                     Image cardImg = new ImageIcon(getClass().getResource(card.getImagePath())).getImage();
+                    g.drawImage(cardImg,cardWidth + 25 + (cardWidth + 5)*i, 20, cardWidth, cardHeight, null );
                 }
             } catch(Exception e) {
                 e.printStackTrace();
@@ -171,6 +172,8 @@ public class BlackJack {
         System.out.println("AFTER SHUFFLE: ");
         System.out.println(deck);
     }
+
+
 
 
 
