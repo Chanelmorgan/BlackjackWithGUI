@@ -53,9 +53,14 @@ public class BlackJack {
                 // Draw hidden card
                 Image hiddenCardImg = new ImageIcon(getClass().getResource("./cards/BACK.png")).getImage();
                 g.drawImage(hiddenCardImg, 20, 20, cardWidth, cardHeight, null);
+
+                // Draw the dealer's hand
+                for(int i =0; i<dealerHand.size(); i++) {
+                    Card card = dealerHand.get(i);
+                    Image cardImg = new ImageIcon(getClass().getResource(card.getImagePath())).getImage();
+                }
             } catch(Exception e) {
                 e.printStackTrace();
-                ;
             }
         }
     };
@@ -166,8 +171,6 @@ public class BlackJack {
         System.out.println("AFTER SHUFFLE: ");
         System.out.println(deck);
     }
-
-
 
 
 

@@ -35,4 +35,9 @@ public class Card {
 
     }
 
+    // method to get the image path
+    public String getImagePath(){
+        return "./.cards/" + this + ".png";
+    }
+
 }
